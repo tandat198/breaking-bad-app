@@ -1,6 +1,25 @@
 import React, { useState, Fragment } from "react";
 import "./App.css";
-import { Container, Card, CardBody, CardImg, FormInput, Button, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Collapse } from "shards-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
+import {
+    Container,
+    Card,
+    CardBody,
+    CardImg,
+    CardHeader,
+    CardTitle,
+    CardFooter,
+    FormInput,
+    Button,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Collapse,
+} from "shards-react";
 
 function App() {
     const [collapseOpen, setCollapseOpen] = useState(false);
@@ -149,89 +168,86 @@ function App() {
             category: "Breaking Bad",
             better_call_saul_appearance: [],
         },
-        {
-            char_id: 12,
-            name: "Tuco Salamanca",
-            birthday: "Unknown",
-            occupation: ["Meth Distributor"],
-            img: "https://vignette.wikia.nocookie.net/breakingbad/images/a/a7/Tuco_BCS.jpg/revision/latest?cb=20170810082445",
-            status: "Deceased",
-            nickname: "Tuco",
-            appearance: [1, 2],
-            portrayed: "Raymond Cruz",
-            category: "Breaking Bad, Better Call Saul",
-            better_call_saul_appearance: [1, 2],
-        },
-        {
-            char_id: 13,
-            name: "Marco & Leonel Salamanca",
-            birthday: "Unknown",
-            occupation: ["Cartel Hitman"],
-            img: "https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_the-cousins-lg.jpg",
-            status: "Deceased",
-            nickname: "The Cousins",
-            appearance: [3],
-            portrayed: "Luis & Daniel Moncada",
-            category: "Breaking Bad",
-            better_call_saul_appearance: [],
-        },
-        {
-            char_id: 14,
-            name: "Lydia Rodarte-Quayle",
-            birthday: "Unknown",
-            occupation: ["Executive at Madrigal"],
-            img:
-                "https://media1.popsugar-assets.com/files/thumbor/wERDST0TUb-iHCSb2r5ZpsvaZLo/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2013/07/17/675/n/1922283/fae2f583f04bb80f_Laura-Fraser-is-back-as-Lydia-Rodarte-Quayle_gallery_primary/i/Laura-Fraser-Lydia-Rodarte-Quayle.jpg",
-            status: "Alive",
-            nickname: "Lydia",
-            appearance: [5],
-            portrayed: "Laura Fraser",
-            category: "Breaking Bad",
-            better_call_saul_appearance: [],
-        },
     ];
     const toggleCollapse = () => {
         setCollapseOpen(!collapseOpen);
     };
     return (
         <Fragment>
-            <Navbar className='mb-5' type='dark' theme='primary' expand='md'>
+            <Navbar type='dark' theme='dark' expand='md'>
                 <Container>
-                    <NavbarBrand href='#'>Breaking Bad</NavbarBrand>
+                    <NavbarBrand href='/' className='text-success'>
+                        Breaking Bad
+                    </NavbarBrand>
                     <NavbarToggler onClick={toggleCollapse} />
                     <Collapse open={collapseOpen} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink href='/'>Characters</NavLink>
+                                <NavLink href='/' className='text-success'>
+                                    Characters
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href='/' className='text-success'>
+                                    Episodes
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href='/' className='text-success'>
+                                    Quotes
+                                </NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
                 </Container>
             </Navbar>
-            <Container>
-                <form className='d-flex'>
-                    <FormInput invalid placeholder='Search character by name' />
-                    <Button outline className='ml-3 w-25' type='submit'>
-                        Search
-                    </Button>
-                </form>
-                <div className='d-flex flex-wrap mt-4 text-center'>
-                    {characters.map((character) => (
-                        <Card className='position-relative'>
-                            <CardImg top src={character.img} />
-                            <CardBody>{character.name}</CardBody>
-                            <div className='position-absolute w-100 hide-btn-wp'>
-                                <Button pill theme='info' className='mb-2'>
-                                    More Details
-                                </Button>
-                                <Button pill theme='danger'>
-                                    Hide Character
-                                </Button>
-                            </div>
-                        </Card>
-                    ))}
-                </div>
-            </Container>
+
+            {/* HomePage */}
+            <div className='bg-secondary py-5'>
+                <Container>
+                    <form className='d-flex'>
+                        <FormInput invalid placeholder='Search character by name' />
+                        <Button theme='success' className='ml-3 w-25' type='submit'>
+                            Search
+                        </Button>
+                    </form>
+                    <div className='d-flex flex-wrap mt-4 text-center'>
+                        {characters.map((character) => (
+                            <Card className='position-relative bg-dark'>
+                                <div className='overlay'></div>
+                                <CardImg top src={character.img} />
+                                <CardBody className='text-success'>{character.name}</CardBody>
+                                <div className='position-absolute w-100 hide-btn-wp'>
+                                    <Button pill theme='success' className='mb-2'>
+                                        More Details
+                                    </Button>
+                                    <Button pill outline theme='danger'>
+                                        Hide Character
+                                    </Button>
+                                </div>
+                            </Card>
+                        ))}
+                    </div>
+                </Container>
+            </div>
+
+            {/* EpisodesPage */}
+            <div className='bg-secondary py-5'>
+                <Container>
+                    <Card className='position-relative bg-dark'>
+                        <CardBody>
+                            <CardTitle className='text-success'>Ozymandias</CardTitle>
+                            <p className='text-light'>Season: 5</p>
+                            <p className='text-light'>Episode: 14</p>
+                            <p className='text-light'>Characters: Walter White, Jesse Pinkman, Skyler White</p>
+                            <Button outline theme='success'>
+                                Read more &rarr;
+                            </Button>
+                        </CardBody>
+                        <CardFooter className='text-light'>Air Date: 09-15-2013</CardFooter>
+                    </Card>
+                </Container>
+            </div>
         </Fragment>
     );
 }
