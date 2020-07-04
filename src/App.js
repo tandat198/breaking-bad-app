@@ -2,24 +2,7 @@ import React, { useState, Fragment } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import {
-    Container,
-    Card,
-    CardBody,
-    CardImg,
-    CardHeader,
-    CardTitle,
-    CardFooter,
-    FormInput,
-    Button,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Collapse,
-} from "shards-react";
+import { Container, Card, CardBody, CardImg, CardTitle, CardFooter, FormInput, Button, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Collapse } from "shards-react";
 
 function App() {
     const [collapseOpen, setCollapseOpen] = useState(false);
